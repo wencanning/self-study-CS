@@ -34,3 +34,11 @@ deepseek团队尝试先让model先具备基础推理能力来避免base model在
 
 ## 2 GRPO
 
+###2.1 GRPO in TRL
+
+官方文档: https://huggingface.co/docs/trl/grpo_trainer
+
+注意几个点
+
+- reward function 的 input 会根据 dataset 的format有所区别, 注意区分 standard format 还是 conversational format.
+- vllm 加速推理有两种形式
