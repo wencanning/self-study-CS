@@ -8,7 +8,7 @@ The official document: https://verl.readthedocs.io/en/v0.5.x/examples/config.htm
 
 
 
-![image-20251124190754468](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20251124190754468.png)
+![ver_training_pipeline](../../../asset/ver_training_pieline.png)
 
 This figure illustrates how the configurations affect the training.
 
