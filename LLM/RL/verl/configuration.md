@@ -48,3 +48,10 @@ This figure illustrates how the configurations affect the training.
 
 - **algorithm.use_kl_in_reward**:  默认为False 、
   - 对经典PPO，需要改为True。
+
+## 其它参数
+
+- actor_rollout_ref.model.use_remove_padding: 默认为False. 设置为True来加速训练
+  - Whether to use **remove padding** in the model. If set to True, the model will remove padding tokens in the input_ids and response_ids. This helps a lot in improving model running efficiency.
+
+setting environmental variable `VERL_USE_MODELSCOPE=True` 让VERL自动从modelscope下载模型
