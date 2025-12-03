@@ -1,6 +1,12 @@
-## A. Prompt Templates
 
-### A.1. Proof Generation Prompt
+
+
+
+
+
+# A. Prompt Templates
+
+## A.1. Proof Generation Prompt
 
 Your task is to solve a given problem. The problem may ask you to prove a statement, or ask for an answer. If finding an answer is required, you should come up with the answer, and your final solution should also be a rigorous proof of that answer being valid.
 
@@ -78,8 +84,6 @@ Here is your task input:
 { question }
 ## Solution
 { proof }
-
-
 
 
 
