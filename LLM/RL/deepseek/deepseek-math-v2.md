@@ -1,8 +1,66 @@
+# DeepSeekMath-V2 训练 pipeline
+
+## Proof Verification Model
+
+### 第一阶段 initial proof verification model
+
+- **Curating Cold Start RL Data**: 从Art of Problem Solving (AoPS) contests收集了17503个问题作为数据集$D_p$, 接下来让DeepSeek-V3.2-Exp-Thinking 通过循环迭代的方式改善proof的质量(iteratively refine its proofs over multiple rounds to improve comprehensiveness and rigor.) 。最终在不同种类的问题上随机采样，让数学专家进行打分得到数据集$D_v={(X_i,Y_i,s_i)}$ ，其中$s_i$是专家的打分。
+- **RL GRPO** --->  verifier: 奖励分为格式奖励和score奖励，我感觉这有点SFT的味道，给予的奖励信号激励模型产生的$s_i '$朝$s_i$对齐。非常值得学习这种奖励函数的格式
+
+$$
+R_{\text{score}}(s_i', s_i) = 1 - \lvert s_i' - s_i \rvert
+$$
+
+RL Objective
+$$
+\max_{\pi_{\varphi}} 
+\mathbb{E}_{(X_i, Y_i, s_i) \sim \mathcal{D}_\nu,\; (V_i', s_i') \sim \pi_{\varphi}(\cdot \mid X_i, Y_i)}
+\left[ R_{\text{format}}(V_i') \cdot R_{\text{score}}(s_i', s_i) \right]
+$$
+
+### 第二阶段 use meta-verification to enhance verification model
+
+- 为什么需要meta-verification？ ：第一阶段的RL只激励模型朝人工标注的$s_i$对齐，但并没有监督有问题的证明本身(but provides no direct supervision on the identified issues themselves), 导致模型可能会出现 reward hacking： 即虚构不存在的问题来获得full reward。
+- **RL GRPO** ---> meta-verifier: 构建新的数据集$D_{mv}={(X_i,Y_i,V_i,ms_i)}$ ，其中$ms_i$是人工标注的打分，RL Objective同第一阶段的
+- **enhance verifier through meta-verifier:**  通过将meta-verifier的反馈加入奖励信号，通过RL训练出一个能够同时执行证明验证和元验证任务的单一模型
+
+$$
+R_v=R_{format}.R_{score}.R_{meta}
+$$
+
+## Proof Generation Model
+
+### proof generation model
+
+- **RL GRPO** ： 让上述训练得到的verifier充当奖励模型，激励proof generater产生质量更高的proof。
+- **endow the proof generator with genuine verification**： deepseek团队在训练generator的时候发现一个问题：把生成器自己生成的proof送给它自己verification，即使是非常明显的错误，它都发现不了。为了让生成器能够诚实的自我评估，deepseek团队设计了一个新的Reward。激励模型不仅生成正确的答案，而且诚实的自我评估。其中： α = 0.76 and β = 0.24.
+
+$$
+R = R_{format}(Y,Z).(\alpha.R_y + \beta.R_z)
+$$
+
+$$
+R_Z=R_{score}(s',s).R_{meta}(Z)
+$$
 
 
 
+### Enhancing Reasoning via Self-Verification
 
+1. 每轮迭代首先优化验证器的能力（即训在难以识别的proof上训练该模型）
+2. 让**刚刚优化完成的验证器的检查点**作为生成器，接着优化生成器。（为什么可以这样呢？因为评估一个答案的好坏比从头开始做要容易）
+3. 最后采用拒绝式微调（rejection fine-tuning）用于**整合前一迭代中验证器和生成器学到的能力**，作为下一轮验证器的起点。
 
+- 如何处理当生成器能力变强，验证器能力更不上的问题？
+  - 找到哪些**验证器无法识别的proof**来训练verifier。
+- 如何找到哪些验证器无法识别的proof？
+  - deepseek团队提出一个automated labeling process:(扩大TTS)
+    - 每个证明采用n个独立的verifier来验证
+    - 对于每个检查出有问题的(0, 0.5)analysis，使用m个meta-verifier来证明其正确性，只有当大部分meta-verifier都认为合理才能算作合理
+    - 对于每个proof，
+      - 若全部的verification都认为没问题，那么该proof score为1
+      - 对于最低的socre，若有大于k个verification都是这个score，那么该proof标记为该最低score
+      - 其它情况：即有的verifier认为这个proof有问题，但数量不多。这种情况就会送给人工标记，**即为无法识别的proof**
 
 # A. Prompt Templates
 
@@ -87,7 +145,7 @@ Here is your task input:
 
 
 
-## A.3. Meta-Verification Prompt
+## A.3. Meta-Verification Prompt  即 meta-verification rubrics
 
 You are given a "problem", "solution", and "solution evaluation", and you need to assess whether this "solution evaluation" is reasonable.
 
