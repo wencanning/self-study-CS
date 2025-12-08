@@ -26,13 +26,13 @@ To ensure the highest accuracy, you should critically evaluate your initial clas
 
 Your final response should be in the following format:
 
-## Analysis// Your final analysis should start with this exact same markdown title
+## Analysis//Your final analysis should start with this exact same markdown title
 
-Here is my analysis of the text classification task:// Your analysis should start with this exact same phrase
+Here is my analysis of the text classification task: //Your analysis should start with this exact same phrase.
 
-...// Your analysis here.
+...//Your analysis here.
 
-Based on my analysis , the final label should be: ... // where ... should be the final label based on your analysis.
+Based on my analysis , the final label should be: ... //where ... should be the final label based on your analysis.
 
 ---
 
@@ -40,53 +40,75 @@ Here is your task input:
 
 ## Part of the interview
 
-Q. Yet over the last several months, we've seen many members of your own party in Congress embroiled in one scandal or another and all too ready to blame somebody else, whether prosecutors or Democrats or even the media. So I'm wondering, why do you think it is so many people in your own party have failed to live up to the standards of the responsibility era?
+{}
 
-A.If any person in any party fails to live up to high standards, they ought to be held to account, Richard. It's important for there to be trust in the Halls of Congress and in the White House and throughout government. People got to trust elected leaders in order for democracy to work to its fullest extent. And I fully expect people to be held to account if there's wrongdoing, just like I expect corporate executives to be held to account for wrongdoing, just like I expect people throughout our society to be held to account for wrongdoing.People do have to take responsibility for the decisions they make in life. I take responsibility for the decisions I make. I also understand that those of us in positions of responsibility have the duty to bring honor to the offices we hold. People don't have to agree with somebody's opinion—there's all kinds of opinions here—but in order to make this country work and to make democracy succeed, there's got to be high standards, and people must be held to account to achieve those standards.I thank you for your time. See you on the campaign trail.
+{}
 
 ## Question
 
-Why do you think it is so many people in your own party have failed to live up to the standards of the responsibility era?
+{}
+
+
 
 
 
 # Verification Prompt
 
-## Instruction
+Your task is to critically evaluate the accuracy and reasoning of a text classification assignment. The "Part of the interview"  and "Question" consists of an interview question and an answer. The "Solution" is a proposed classification of that answer into specific categories (e.g., Explicit, Dodging, Deflection, etc.), accompanied by a rationale.
 
-Your task is to critically evaluate the accuracy and reasoning of a text classification assignment. The "Problem" consists of an interview question and an answer. The "Solution" is a proposed classification of that answer into specific categories (e.g., Explicit, Dodging, Deflection, etc.), accompanied by a rationale.
+You must act as a strict adjudicator and determine whether the solution is **Correct** or **Incorrect** based on the following strict criteria:
 
-You must act as a strict adjudicator and score the solution based on the following criteria:
-
-- **Score 1 (Correct):** The classification label is indisputably the best fit according to the standard definitions. The accompanying rationale provides robust textual evidence, explicitly linking the interviewee's specific wording to the category's criteria, and successfully rules out other similar categories (e.g., correctly distinguishing between 'Dodging' and 'Deflection').
-- **Score 0.5 (Acceptable but Flawed):** The classification label is plausible or partially correct, but the reasoning is weak, generic, or misses key rhetorical nuances. Alternatively, the solution chooses a broader category (e.g., 'Implicit') when a more specific one (e.g., 'Deflection') would be more accurate.
-- **Score 0 (Incorrect):** The classification label is objectively wrong, misinterprets the text, hallucinates information not present in the excerpt, or fails to address the specific question asked.
+- **Correct:** The classification label is indisputably the best fit according to the standard definitions. AND, the accompanying rationale provides robust textual evidence, explicitly linking the interviewee's specific wording to the category's criteria. It must successfully rule out other similar categories (e.g., distinguishing 'Dodging' from 'Deflection').
+- **Incorrect:** The solution falls into ANY of the following failure modes:
+    1. The label is objectively wrong.
+    2. The label is plausible, but the reasoning is weak, generic, or fails to cite specific evidence.
+    3. The analysis hallucinates information not present in the text.
+    4. A broader category (e.g., 'Implicit') is chosen when a more specific one (e.g., 'Deflection') would be more accurate.
 
 **Important Constraints:**
+
 - Do not accept generic justifications. The solution must reference specific phrases or logic within the text.
 - If the solution cites "Context" or "Intent," it must be grounded in the provided text, not assumed external knowledge.
 
-Please carefully scrutinize the quality of the classification below. In your final response, present a detailed critique followed by your score.
+Please carefully scrutinize the quality of the classification below. In your final response, present a detailed critique followed by your final verdict.
 
 Your response should follow this format:
 
-**Here is my evaluation of the solution:**
-... // Your evaluation here. You are required to:
-1. **Verify the Label:** Is this strictly the best category? Compare it against potential alternative labels.
-2. **Audit the Reasoning:** specific analyze whether the cited evidence supports the label. For correct steps, explain why the interpretation is sound. For errors, explain exactly where the logic diverges from the definitions or the text.
+## Evaluation//Your final evaluation should start with this exact same markdown title
 
-**Based on my evaluation, the final overall score should be:**
-\boxed{...} // where ... should be the final overall score (0, 0.5, or 1) based on the criteria above.
+Here is my evaluation of the solution: //Your evaluation should start with this exact same phrase.
+... //Your evaluation here. You are required to:
+
+1. **Verify the Label:** Is this strictly the best category? Compare it against potential alternative labels.
+2. **Audit the Reasoning:** Specifically analyze whether the cited evidence supports the label. For correct classifications, explain why the interpretation is sound. For errors, explain exactly where the logic diverges from the definitions or the text.
+
+Based on my evaluation, the final verdict is: ... //Output strictly either "Correct" or "Incorrect"
 
 ---
 
 Here is your task input:
 
-## Problem (Context & Question/Answer)
+## Part of the interview
+
+{}
+
+{}
+
+## Question
+
 {}
 
 ## Solution (Proposed Classification)
+
 {}
+
+
+
+
+
+
+
+
 
 
 
