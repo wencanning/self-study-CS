@@ -20,40 +20,36 @@ Please evaluate the solution and score it according to the following criteria:
 - If the solution is generally correct, but with some details omitted or minor errors, then the score is 0.5
 - If the solution does not actually address the required problem, contains fatal errors, or has severe omissions, then the score is 0
 
-Additionally, referencing anything from any paper does not save the need to prove the reference. It’s okay IF AND ONLY IF the solution also presents a valid proof of the reference argument(s); otherwise, if the solution omits the proof or if the proof provided is not completely correct, the solution should be scored according to the criteria above, and definitely not with a score of 1
+Additionally, referencing anything from any paper does not save the need to prove the reference. It's okay IF AND ONLY IF the solution also presents a valid proof of the reference argument(s); otherwise, if the solution omits the proof or if the proof provided is not completely correct, the solution should be scored according to the criteria above, and definitely not with a score of 1
 ```
 
 In fact, you already have the ability to rate your solution yourself, so you are expected to reason carefully about how to solve a given problem, evaluate your method according to the instruction, and refine your solution by fixing issues identified until you can make no further progress.
 
 In your final response, you should present a detailed solution to the problem followed by your evaluation of that solution.
-
-*   To give a good final response, you should try your best to locate potential issues in your own (partial) solution according to the evaluation instruction above, and fix them as many as you can.
-*   A good final response should just faithfully present your progress, including the best solution you can give, as well as a faithful evaluation of that solution.
-*   Only when you fail to locate any issues in your solution should you score it with 1.
-*   If you do notice some issues in your solution but fail to resolve them with your best efforts, it’s totally ok to faithfully present the issues in your final response.
-*   The worst final response would provide a wrong solution but lie that it’s correct or claim that it’s correct without careful error checking. A better version should faithfully identify errors in the solution.
-
-Remember! You CAN’T cheat! If you cheat, we will know, and you will be penalized!
+- To give a good final response, you should try your best to locate potential issues in your own (partial) solution according to the evaluation instruction above, and fix them as many as you can.
+- A good final response should just faithfully present your progress, including the best solution you can give, as well as a faithful evaluation of that solution.
+- Only when you fail to locate any issues in your solution should you score it with 1.
+- If you do notice some issues in your solution but fail to resolve them with your best efforts, it's totally ok to faithfully present the issues in your final response.
+- The worst final response would provide a wrong solution but lie that it's correct or claim that it's correct without careful error checking. A better version should faithfully identify errors in the solution. Remember! You CAN'T cheat! If you cheat, we will know, and you will be penalized!
 
 Your final response should be in the following format:
 
-## Solution
-// Your final solution should start with this exact same markdown title ...
-// Your final solution to the problem here. You should try your best to optimize the quality of your solution according to the evaluation instruction above before finalizing it here.
+## Solution // Your final solution should start with this exact same markdown title
+... // Your final solution to the problem here. You should try your best to optimize the quality of your solution according to the evaluation instruction above before finalizing it here.
 
-## Self Evaluation
-// Your evaluation of your own solution above should start with this exact same markdown title
+## Self Evaluation // Your evaluation of your own solution above should start with this exact same markdown title
 
-Here is my evaluation of the solution: // Your analysis should start with this exact same phrase ...
+Here is my evaluation of the solution: // Your analysis should start with this exact same phrase
+... // Your evaluation here. You are required to present in detail the key steps of the solution or the steps for which you had doubts regarding their correctness, and explicitly analyze whether each step is accurate: for correct steps, explain why you initially doubted their correctness and why they are indeed correct; for erroneous steps, explain the reason for the error and the impact of that error on the solution. You should analyze your solution faithfully. E.g., if there are issues in your final solution, you should point it out.
 
-// Your evaluation here. You are required to present in detail the key steps of the solution or the steps for which you had doubts regarding their correctness, and explicitly analyze whether each step is accurate: for correct steps, explain why you initially doubted their correctness and why they are indeed correct; for erroneous steps, explain the reason for the error and the impact of that error on the solution. You should analyze your solution faithfully. E.g., if there are issues in your final solution, you should point it out.
+Based on my evaluation, the final overal score should be:
+\\boxed{{...}} // where ... should be the final overall score (0, 0.5, or 1, and nothing else) based on the evaluation instruction above. You should reach this score ONLY AFTER careful RE-examination of your own solution above
 
-Based on my evaluation, the final overall score should be: \boxed{...} // where ... should be the final overall score (0, 0.5, or 1, and nothing else) based on the evaluation instruction above. You should reach this score ONLY AFTER careful RE-examination of your own solution above
+---
 
---Here is your task input:
+Here is your task input:
 
-## Problem 
-
+## Problem
 {question}
 
 
@@ -134,6 +130,7 @@ Next, I will introduce the rules for you to analyze the quality of the "solution
    - If some defects found by the "solution evaluation" are reasonable and some are unreasonable, then your rating should be \(0.5\).
 
    Next, if the "solution evaluation" points out no errors or defects, or all defects found by the evaluation are reasonable, then you should do the following things:
+   
    - Analyze whether "expression errors" exist in the "solution evaluation" (**expression analysis**) or whether "solution evaluation" gives a wrong score according to the rules for "solution evaluation" (**score analysis**). If yes, you should rate the "solution evaluation" with \(0.5\); if no, your rating should be \(1\).
 
 Your output should follow the format below:
