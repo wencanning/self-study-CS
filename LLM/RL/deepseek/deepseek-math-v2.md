@@ -37,7 +37,6 @@ $$
 
 $$
 R = R_{format}(Y,Z).(\alpha.R_y + \beta.R_z)
-
 $$
 
 $$
@@ -213,3 +212,15 @@ Based on my analysis, I will rate the "solution evaluation" as:
 ## Solution Evaluation 
 
 {proof analysis}
+
+## A.4 proof_refinement
+
+{instruction}
+
+## Candidate Solution(s) to Refine
+Here are some solution sample(s) along with their correctness evaluation(s). You should provide a better solution by solving issues mentioned in the evaluation(s), or by re-using promising ideas mentioned in the solution sample(s), or by doing both.
+
+{proofs_to_refine}
+
+## Final Instruction
+Your final response should follow the format above, including a `## Solution` section followed by a `## Self Evaluation` section

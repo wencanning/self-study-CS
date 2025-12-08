@@ -1,4 +1,4 @@
-#  Answer Generation Prompt
+# Answer Generation Prompt
 
 Your task is to execute a precise text classification analysis. Based on the provided interview excerpt, characterize the nature of the interviewee's response to the specified question. You are required to assign the response to exactly one of the nine categories listed below, strictly adhering to the definitions to distinguish between nuanced labels.
 
@@ -48,3 +48,61 @@ A.If any person in any party fails to live up to high standards, they ought to b
 
 Why do you think it is so many people in your own party have failed to live up to the standards of the responsibility era?
 
+
+
+# Verification Prompt
+
+## Instruction
+
+Your task is to critically evaluate the accuracy and reasoning of a text classification assignment. The "Problem" consists of an interview question and an answer. The "Solution" is a proposed classification of that answer into specific categories (e.g., Explicit, Dodging, Deflection, etc.), accompanied by a rationale.
+
+You must act as a strict adjudicator and score the solution based on the following criteria:
+
+- **Score 1 (Correct):** The classification label is indisputably the best fit according to the standard definitions. The accompanying rationale provides robust textual evidence, explicitly linking the interviewee's specific wording to the category's criteria, and successfully rules out other similar categories (e.g., correctly distinguishing between 'Dodging' and 'Deflection').
+- **Score 0.5 (Acceptable but Flawed):** The classification label is plausible or partially correct, but the reasoning is weak, generic, or misses key rhetorical nuances. Alternatively, the solution chooses a broader category (e.g., 'Implicit') when a more specific one (e.g., 'Deflection') would be more accurate.
+- **Score 0 (Incorrect):** The classification label is objectively wrong, misinterprets the text, hallucinates information not present in the excerpt, or fails to address the specific question asked.
+
+**Important Constraints:**
+- Do not accept generic justifications. The solution must reference specific phrases or logic within the text.
+- If the solution cites "Context" or "Intent," it must be grounded in the provided text, not assumed external knowledge.
+
+Please carefully scrutinize the quality of the classification below. In your final response, present a detailed critique followed by your score.
+
+Your response should follow this format:
+
+**Here is my evaluation of the solution:**
+... // Your evaluation here. You are required to:
+1. **Verify the Label:** Is this strictly the best category? Compare it against potential alternative labels.
+2. **Audit the Reasoning:** specific analyze whether the cited evidence supports the label. For correct steps, explain why the interpretation is sound. For errors, explain exactly where the logic diverges from the definitions or the text.
+
+**Based on my evaluation, the final overall score should be:**
+\boxed{...} // where ... should be the final overall score (0, 0.5, or 1) based on the criteria above.
+
+---
+
+Here is your task input:
+
+## Problem (Context & Question/Answer)
+{}
+
+## Solution (Proposed Classification)
+{}
+
+
+
+# Refinement Prompt
+
+{}
+
+## Preliminary Assessment to Refine
+
+Below are sample classification(s) generated for this interview excerpt, accompanied by a critical evaluation. Your objective is to derive a superior, definitive classification. You should achieve this by correcting the misinterpretations identified in the evaluation(s) while retaining any accurate observations regarding the interviewee's rhetorical strategy or linguistic patterns.
+
+### Draft Analysis
+{}
+
+### Critical Review
+{}
+
+## Final Instruction
+// Your final response must strictly follow the output format defined in the original instruction. Crucially, you must include a `## Analysis` section that explicitly links the text evidence to the chosen category definition, resolving any prior ambiguities.
