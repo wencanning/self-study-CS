@@ -3,21 +3,13 @@
 Your task is to execute a precise text classification analysis. Based on the provided interview excerpt, characterize the nature of the interviewee's response to the specified question. You are required to assign the response to exactly one of the nine categories listed below, strictly adhering to the definitions to distinguish between nuanced labels.
 
 - Explicit: The information requested is explicitly stated (in the requested form)
-
 - Implicit: The information requested is given, but without being explicitly stated (not in the requested form)
-
 - Dodging: Ignoring the question altogether
-
 - Deflection: Starts on topic but shifts the focus and makes a different point than what is asked
-
 - Partial/half-answer: Offers only a specific component of the requested information.
-
 - General: The information provided is too general/lacks the requested specificity.
-
 - Declining to answer: Acknowledge the question but directly or indirectly refusing to answer at the moment
-
 - Claims ignorance: The answerer claims/admits not to know the answer themselves.
-
 - Clarification: Does not provide the requested information and asks for clarification.
 
 In your final response, you are required to substantiate your classification with a detailed analysis that explicitly links the interviewee's wording to the category definition.
@@ -32,7 +24,8 @@ Here is my analysis of the text classification task: //Your analysis should star
 
 ...//Your analysis here.
 
-Based on my analysis , the final label should be: ... //where ... should be the final label based on your analysis.
+Based on my analysis , the final label should be:
+\\boxed{{...}} //where ... should be the final label based on your analysis.
 
 ---
 

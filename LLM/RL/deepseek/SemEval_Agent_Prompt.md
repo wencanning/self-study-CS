@@ -32,7 +32,7 @@ Here is my analysis of the text classification task: //Your analysis should star
 
 ...//Your analysis here.
 
-Based on my analysis , the final label should be: ... //where ... should be the final label based on your analysis.
+Based on my analysis, the final label should be: ... //where ... should be the final label based on your analysis.**Output the label ONLY.**
 
 ---
 
@@ -82,7 +82,7 @@ Here is my evaluation of the solution: //Your evaluation should start with this 
 1. **Verify the Label:** Is this strictly the best category? Compare it against potential alternative labels.
 2. **Audit the Reasoning:** Specifically analyze whether the cited evidence supports the label. For correct classifications, explain why the interpretation is sound. For errors, explain exactly where the logic diverges from the definitions or the text.
 
-Based on my evaluation, the final verdict is: ... //Output strictly either "Correct" or "Incorrect"
+Based on my evaluation, the final verdict is: ... //Output strictly either "Correct" or "Incorrect".
 
 ---
 
@@ -127,4 +127,5 @@ Below are sample classification(s) generated for this interview excerpt, accompa
 {}
 
 ## Final Instruction
-// Your final response must strictly follow the output format defined in the original instruction. Crucially, you must include a `## Analysis` section that explicitly links the text evidence to the chosen category definition, resolving any prior ambiguities.
+Your final response must strictly follow the output format defined in the original instruction. Crucially, you must start with `## Analysis` section that explicitly links the text evidence to the chosen category definition, resolving any prior ambiguities.
+
